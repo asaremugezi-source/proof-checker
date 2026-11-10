@@ -17,4 +17,13 @@ def split_statements(statements):
     return [x.strip() for x in statements.split("&")]
 
 def split_variables(variables):
-    return [x.strip() for x in variables.split(" ")]
+    y = [x.strip() for x in variables.split(" ")]
+    S = set()
+    z = []
+    for a in y:
+        if a in S or a == "":
+            continue
+        z.append(a)
+        S.add(a)
+    return z
+            
