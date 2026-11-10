@@ -1,0 +1,6 @@
+a b c
+Assume: 
+a = b &
+b = c
+Then:
+a = c
