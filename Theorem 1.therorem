@@ -1,3 +1,4 @@
+x y z
 Assume:
 i. x = y &
 ii. x = z
@@ -6,5 +7,5 @@ Then:
 y = z
 
 Proof:
-1. y = x [Equivalance Relation - Reflexivity(x, y){i.}]
-2. y = z [Equivalnce Relation - Transitivity(z, y, x){1. ii.}]
+1. y = x [Equivalance Relation - Reflexivity(x y){i.}]
+2. y = z [Equivalnce Relation - Transitivity(z y x){1. ii.}]
