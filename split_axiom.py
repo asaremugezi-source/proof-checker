@@ -14,7 +14,12 @@ def split_axiom(axiom):
     return split_axiom2(split_axiom1(axiom))
 
 def split_statements(statements):
-    return [x.strip() for x in statements.split("&")]
+    a = [x.strip() for x in statements.split("&")]
+    b = []
+    for y in a:
+        if y != "":
+            b.append(y)
+    return b
 
 def split_variables(variables):
     y = [x.strip() for x in variables.split(" ")]

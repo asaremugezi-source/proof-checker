@@ -1,9 +1,6 @@
 from split_axiom import split_axiom
-def read_text_file(file_name):
-    x = open(file_name, "r")
-    s = x.read()
-    x.close()
-    return s
+from read_text_file import read_text_file
+
 
 def find_substring(substring, string):
     ans = []

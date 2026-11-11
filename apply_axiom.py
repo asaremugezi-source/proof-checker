@@ -19,11 +19,8 @@ def write_statements(variables, var_locations, statements):
     return ans
         
     
-def apply_axiom(variables,
-                known_results,
-                var_locations,
-                axiom_assumptions,
-                axiom_result):
+def apply_axiom(variables, known_results, axiom):
+    var_locations, axiom_assumptions, axiom_result = axiom
     requirements = write_statements(variables, var_locations[0], axiom_assumptions)
     if known_results == requirements:
         return write_statements(variables, var_locations[1], axiom_result)

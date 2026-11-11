@@ -1,0 +1,11 @@
+x y z
+Assume:
+i. x = y &
+ii. x = z
+
+Then:
+y = z
+
+Proof:
+1. y = x [Equivalance Relation - Symmetry.axiom(x, y){i.}]&
+2. y = z [Equivalance Relation - Transitivity.axiom(y, x, z){1. ii.}]
