@@ -20,14 +20,14 @@ def apply_theorem(variables, known_results, theorem):
     return apply_axiom(variables, known_results, axiom)
 
 def find_references(references, labels, assumptions, proof, n):
-    known_results = []
+    known_results = set()
     for reference in references:
         a, b = labels[reference]
         assert a == 0 or b < n
         if a == 0:
-            known_results.append(assumptions[b])
+            known_results.add(assumptions[b])
         else:
-            known_results.append(proof[b][0])
+            known_results.add(proof[b][0])
     return known_results
             
 

@@ -18,11 +18,16 @@ def write_statements(variables, var_locations, statements):
         ans.append(write_statement(variables, var_locations[a], statements[a]))
     return ans
         
-    
+def good_assumptions(known_results, requirements):
+    for requirement in requirements:
+        if requirement not in known_results:
+            return False
+    return True
+
 def apply_axiom(variables, known_results, axiom):
     var_locations, axiom_assumptions, axiom_result = axiom
     requirements = write_statements(variables, var_locations[0], axiom_assumptions)
-    if known_results == requirements:
+    if good_assumptions(known_results, requirements):
         return set(write_statements(variables, var_locations[1], axiom_result))
     else:
         return set()
