@@ -7,32 +7,43 @@ def prove_statement(claim, axiom_name, variables, known_results):
         axiom = read_axiom(axiom_name)
         return claim in apply_axiom(variables, known_results, axiom)
     else:
-        theorem = read_theorem(theorem_name)
+        theorem = read_theorem(axiom_name)
         return claim in apply_theorem(variables, known_results, theorem)
 
 def apply_theorem(variables, known_results, theorem):
     if not prove_theorem(theorem):
-        return None
+        return set()
     variables1, assumptions, result, _, _ = theorem
-    axiom = variables, assumptions, result
-    axiom = var_locations = find_variables(variables, assumptions, result)
-    return apply_axiom((var_locations, assumptions, result))
+    
+    var_locations = find_variables(variables1, assumptions, result)
+    axiom = var_locations, assumptions, result
+    return apply_axiom(variables, known_results, axiom)
+
+def find_references(references, labels, assumptions, proof, n):
+    known_results = []
+    for reference in references:
+        a, b = labels[reference]
+        assert a == 0 or b < n
+        if a == 0:
+            known_results.append(assumptions[b])
+        else:
+            known_results.append(proof[b][0])
+    return known_results
+            
 
 
 def prove_theorem(theorem):
     _,assumptions, result, proof, labels = theorem
+    proven = set()
     for n, statement in enumerate(proof):
-        claim, axiom_name, variables, references = statement
-        known_results = []
-        for reference in references:
-            a, b = labels[reference]
-            assert a == 0 or b < n
-            if a == 0:
-                known_results.append(assumptions[b])
-            else:
-                known_results.append(proof[b][0])
         
+        claim, axiom_name, variables, references = statement
+        known_results = find_references(references, labels, assumptions, proof, n)
         if not prove_statement(claim, axiom_name, variables, known_results):
+            return False
+        proven.add(claim)
+    for x in result:
+        if x not in proven:
             return False
     return True
 

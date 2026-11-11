@@ -1,5 +1,11 @@
-from apply_axiom import apply_axiom
-from read_axiom import read_axiom
-s = read_axiom("Equivalance Relation - Reflexivity.axiom")
-print(s)
-print(apply_axiom(["a + b + c"], [], s))
+from read_theorem import read_theorem
+from prove_theorem import prove_theorem
+
+def prove(theorem_name):
+    return prove_theorem(read_theorem(theorem_name))
+
+def main():
+    print(prove("Theorem 2.theorem"))
+
+if __name__ == "__main__":
+    main()

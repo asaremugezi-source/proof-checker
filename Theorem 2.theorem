@@ -1,0 +1,10 @@
+Assume:
+1. a = b &
+2. a = c &
+3. a = d
+Then:
+b = d &
+c = b
+Proof:
+4. b = d [Theorem 1.theorem(a, b, d){1. 3.}]&
+5. c = b [Theorem 1.theorem(a, c, b){2. 1.}]
